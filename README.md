@@ -24,3 +24,5 @@ This probably isn't the most efficient way to do this, but it is the most fun fo
 I will update this part below on the projects I am currently working on!
 
 -------
+
+1. Weather API - Difficulty: Easy
