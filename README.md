@@ -1,17 +1,7 @@
 # Hi, this is my Twenty Five repo!
-This is a work in progress projects that I am developing 25 Projects by the time I graduate in different languages
+This is a work in progress projects that I am developing 25 Projects by the time I graduate
 
-These languages include:
-* Python
-* C# 
-* Java
-* JS/React
-* C++
-* Rust
-* Elixir
-* Go
-
-I may not use every one of these languages but I will certainly learn them!
+**Every Project I will develop has different personal reasons for making them, and I will try my best to make them as professionally developed as possible but I am very new to coding; the projects are my way of learning**
 
 ## My Goal:
 I want to accomplish the following things
@@ -25,4 +15,6 @@ I will update this part below on the projects I am currently working on!
 
 -------
 
-1. Weather API - Difficulty: Easy
+1. Weather API - Difficulty: Easy |  **On Hold**
+2. Compiler -  Difficulty: Medium-Hard?
+3. Encryption Tool -  Difficulty: Medium | **Currently Working on**
