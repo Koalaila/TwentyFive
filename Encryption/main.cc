@@ -1,60 +1,98 @@
 #include <iostream>
 #include <string>
-#include <fstream>
-class EncryptionApp {
-    private:
-        // Define a function to encrypt a string
-        std::string encrypt(const std::string& plaintext, const std::string& key) {
-            // TO DO: implement encryption algorithm here
-            // For now, just return the plaintext
-            return plaintext;
+#include <cctype>
+
+using namespace std;
+class EncryptionApp
+{
+private:
+    string encrypt(string plaintext, string keyword)
+    {
+        string ciphertext = "";
+        int keyword_len = keyword.length();
+
+        for (int i = 0; i < plaintext.length(); i++)
+        {
+            char c = plaintext[i];
+            if (isalpha(c))
+            {
+                int shift = toupper(keyword[i % keyword_len]) - 'A';
+                c = toupper(c);
+                c = (c - 'A' + shift) % 26 + 'A';
+            }
+            ciphertext += c;
+        }
+        return ciphertext;
+    }
+
+    string decrypt(string ciphertext, string keyword)
+    {
+        string plaintext = "";
+        int keyword_len = keyword.length();
+
+        for (int i = 0; i < ciphertext.length(); i++)
+        {
+            char c = ciphertext[i];
+            if (isalpha(c))
+            {
+                int shift = toupper(keyword[i % keyword_len]) - 'A';
+                c = toupper(c);
+                c = (c - 'A' - shift + 26) % 26 + 'A';
+            }
+            plaintext += c;
         }
 
-        // Define a function to decrypt a string
-        std::string decrypt(const std::string& ciphertext, const std::string& key) {
-            // TO DO: implement decryption algorithm here
-            // For now, just return the ciphertext
-            return ciphertext;
-        }
+        return plaintext;
+    }
 
-    public:
-        void runApp() {
-            std::string choice;
-            std::string input;
-            std::string key;
-    //While loop to continue the app until user hits quit 
-            while (true) {
-                std::cout << "Encryption App" << std::endl;
-                std::cout << "1. Encrypt" << std::endl;
-                std::cout << "2. Decrypt" << std::endl;
-                std::cout << "3. Quit" << std::endl;
-                std::cin >> choice;
+public:
+    void runApp()
+    {
+        string choice;
+        string input;
+        string key;
+        // While loop to continue the app until user hits quit
+        while (true)
+        {
+            cout << "Encryption App" << std::endl;
+            cout << "1. Encrypt" << std::endl;
+            cout << "2. Decrypt" << std::endl;
+            cout << "3. Quit" << std::endl;
+            cin >> choice;
 
-                if (choice == "1") {
-                    std::cout << "Enter plaintext: ";
-                    std::cin >> input;
-                    std::cout << "Enter key: ";
-                    std::cin >> key;
-                    std::string ciphertext = encrypt(input, key);
-                    std::cout << "Ciphertext: " << ciphertext << std::endl;
-                } else if (choice == "2") {
-                    std::cout << "Enter ciphertext: ";
-                    std::cin >> input;
-                    std::cout << "Enter key: ";
-                    std::cin >> key;
-                    std::string plaintext = decrypt(input, key);
-                    std::cout << "Plaintext: " << plaintext << std::endl;
-                } else if (choice == "3") {
-                    break;
-                } else {
-                    std::cout << "Invalid choice. Please try again." << std::endl;
-                }
+            if (choice == "1")
+            {
+                cout << "Enter one word: ";
+                cin >> input;
+                cout << "Enter key: ";
+                cin >> key;
+                string ciphertext = encrypt(input, key);
+                cout << "Ciphertext: " << ciphertext << std::endl;
+            }
+            else if (choice == "2")
+            {
+                cout << "Enter ciphertext: ";
+                cin >> input;
+                cout << "Enter key: ";
+                cin >> key;
+                string plaintext = decrypt(input, key);
+                cout << "Plaintext: " << plaintext << endl;
+            }
+            else if (choice == "3")
+            {
+                break;
+            }
+            else
+            {
+                cout << "Invalid choice. Please try again." << endl;
             }
         }
-    };
-
-    int main() {
-        EncryptionApp app;
-        app.runApp();
-        return 0;
     }
+};
+
+int main()
+{
+    EncryptionApp app;
+    app.runApp();
+    return 0;
+}
