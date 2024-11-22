@@ -16,5 +16,6 @@ I will update this part below on the projects I am currently working on!
 -------
 
 1. Weather API - Difficulty: Easy |  **On Hold**
-2. Compiler -  Difficulty: Hard
-3. Encryption Tool -  Difficulty: Medium | **Currently Working on**
+2. Encryption Tool -  Difficulty: Easy | **Currently Working on**
+3. File manager - Difficulty: Medium
+4. Compiler -  Difficulty: Hard
