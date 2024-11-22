@@ -76,7 +76,7 @@ public:
                 cout << "Enter key: ";
                 cin >> key;
                 string plaintext = decrypt(input, key);
-                cout << "Plaintext: " << plaintext << endl;
+                cout << "Word: " << plaintext << endl;
             }
             else if (choice == "3")
             {
