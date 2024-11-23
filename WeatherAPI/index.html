@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="location">
-            <p id="city">City, Country</p>
-        </div>
-        <div class="current-weather">
-            <div class="temp">
-                <p id="temp">0°C</p>
-
-            </div>
-            <div class="weather-icon">
-                <img id="icon" src="icons/sun.png" alt="Weather Icon">
-            </div>
-            <div class="description">
-                <p id="description">Sunny</p>
-            </div>
-        </div>
-        <div class="other-details">
-            <div class="humidity">
-                <p>Humidity: <span id="humidity">0%</span></p>
-            </div>
-            <div class="wind-speed">
-                <p>Wind Speed: <span id="wind-speed">0 m/s</span></p>
-            </div>
+        <h1>Weather App</h1>
+        <form id="weatherForm">
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Enter city name"
+                required
+            />
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="weatherResult" class="result" style="display: none;">
+            <p>Temperature: <span id="temperature"></span></p>
+            <p>Wind Speed: <span id="windSpeed"></span></p>
         </div>
     </div>
+    <script src="app.js" type="module"></script>
 </body>
 </html>
