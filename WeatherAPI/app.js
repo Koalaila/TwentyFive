@@ -1,5 +1,17 @@
-const apiKey = 'd0a17e271ac040d02758bfa9a3c5a532';
-const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+async function loadAPIKey() {
+    try {
+        const response = await fetch('/config.json');
+        const data = await response.json();
+        let apiKey = data.apiKey;
+        let baseUrl = data.baseUrl;
+
+        console.log(apiKey);
+        return [apiKey, baseUrl];
+
+    } catch (error) {
+        console.error('Error loading API key:', error);
+    }
+}
 
 /**
  * Fetches weather data from the API and updates the DOM.
@@ -7,8 +19,8 @@ const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
  */
 async function fetchWeather(city) {
     try {
+        let [apiKey, baseUrl] = await loadAPIKey();
         const url = `${baseUrl}?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
-
         const response = await fetch(url);
         if (!response.ok) {
             const errorData = await response.json();
