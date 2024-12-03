@@ -66,19 +66,28 @@ void readFile() {
 }
 
 void createFile() {
-  stdout.write('Enter the file path to create: ');
-  String? filePath = stdin.readLineSync();
+  try {
+    stdout.write('Enter the file path to create: ');
+    String? filePath = stdin.readLineSync();
 
-  if (filePath != null) {
-    File file = File(filePath);
+    if (filePath != null) {
+      File file = File(filePath);
 
-    if (file.existsSync()) {
-      print('The file already exists.');
-    } else {
-      stdout.write('Enter content for the file: ');
-      String? content = stdin.readLineSync();
-      file.writeAsStringSync(content ?? '');
-      print('File created at $filePath.');
+      if (file.existsSync()) {
+        print('The file already exists.');
+      } else {
+        stdout.write('Enter content for the file: ');
+        String? content = stdin.readLineSync();
+        file.writeAsStringSync(content ?? '');
+        print('File created at $filePath.');
+      }
     }
-  }
+  } on FileSystemException catch (e) {
+    print('Error creating file: ${e}');
+  } on IOException catch (e) {
+    print('Error reading or writing file: $e');
+  } catch (e) {
+    print('An unexpected error occurred: $e');
+  } 
 }
+
